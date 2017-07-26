@@ -114,7 +114,7 @@ static int encode_process(struct vidfilt_enc_st *st, struct vidframe *frame)
 	if (!enc->sws) {
 
 		struct SwsContext *sws;
-		int flags = 0;
+		int flags = 0x100;
 
 		sws = sws_getContext(width, height, avpixfmt,
 				     enc->dst_size.w, enc->dst_size.h,

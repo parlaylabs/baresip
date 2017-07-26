@@ -48,6 +48,7 @@
 #   USE_SPEEX_PP      Speex preprocessor
 #   USE_SRTP          Secure RTP module using libre
 #   USE_STDIO         stdio input driver
+#   USE_SWSCALE       swscale module
 #   USE_SYSLOG        Syslog module
 #   USE_V4L           Video4Linux module
 #   USE_V4L2          Video4Linux2 module
@@ -183,6 +184,7 @@ USE_SPEEX_PP := $(shell [ -f $(SYSROOT)/include/speex_preprocess.h ] || \
 	[ -f $(SYSROOT)/local/include/speex/speex_preprocess.h ] || \
 	[ -f $(SYSROOT_ALT)/include/speex/speex_preprocess.h ] || \
 	[ -f $(SYSROOT)/include/speex/speex_preprocess.h ] && echo "yes")
+USE_SWSCALE := $(shell [ -f /usr/include/libswscale/swscale.h ] && echo "yes")
 USE_SYSLOG := $(shell [ -f $(SYSROOT)/include/syslog.h ] || \
 	[ -f $(SYSROOT_ALT)/include/syslog.h ] || \
 	[ -f $(SYSROOT)/local/include/syslog.h ] && echo "yes")
@@ -419,6 +421,9 @@ MODULES   += speex_pp
 endif
 ifneq ($(USE_STDIO),)
 MODULES   += stdio
+endif
+ifneq ($(USE_SWSCALE),)
+MODULES   += swscale
 endif
 ifneq ($(USE_SYSLOG),)
 MODULES   += syslog
