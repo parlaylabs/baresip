@@ -25,6 +25,7 @@
 #   USE_GST1          Gstreamer 1.0 audio module
 #   USE_GST_VIDEO     Gstreamer 0.10 video module
 #   USE_GST_VIDEO1    Gstreamer 1.0 video module
+#   USE_GST_V4L2_SINK Gstreamer 1.0 v4l2 sink module
 #   USE_GTK           GTK+ user interface
 #   USE_H265          H.265 video codec
 #   USE_ILBC          iLBC audio codec
@@ -113,6 +114,8 @@ USE_GST_VIDEO := \
 	$(shell pkg-config --exists gstreamer-0.10 gstreamer-app-0.10 \
 		&& echo "yes")
 USE_GST_VIDEO1 := $(shell pkg-config --exists gstreamer-1.0 gstreamer-app-1.0 \
+		&& echo "yes")
+USE_GST_V4L2_SINK := $(shell pkg-config --exists gstreamer-0.10 gstreamer-app-0.10 gstreamer-video-0.10 \
 		&& echo "yes")
 USE_GTK := $(shell pkg-config 'gtk+-2.0 >= 2.22' && \
 		   pkg-config 'glib-2.0 >= 2.32' && echo "yes")
@@ -355,6 +358,9 @@ MODULES   += gst_video
 endif
 ifneq ($(USE_GST_VIDEO1),)
 MODULES   += gst_video1
+endif
+ifneq ($(USE_GST_V4L2_SINK),)
+MODULES   += gst_v4l2_sink
 endif
 ifneq ($(USE_GTK),)
 MODULES   += gtk

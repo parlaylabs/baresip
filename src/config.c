@@ -712,6 +712,7 @@ int config_write_template(const char *file, const struct config *cfg)
 	(void)re_fprintf(f, "#module\t\t\t" MOD_PRE "x11" MOD_EXT "\n");
 	(void)re_fprintf(f, "#module\t\t\t" MOD_PRE "sdl2" MOD_EXT "\n");
 	(void)re_fprintf(f, "#module\t\t\t" MOD_PRE "fakevideo" MOD_EXT "\n");
+	(void)re_fprintf(f, "#module\t\t\t" MOD_PRE "gst_v4l2_sink" MOD_EXT "\n");
 
 #endif /* USE_VIDEO */
 
