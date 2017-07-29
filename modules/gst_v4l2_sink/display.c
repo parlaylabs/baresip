@@ -139,7 +139,7 @@ static int pipeline_init(struct vidsink_state *st, const struct vidsz *size)
 	snprintf(pipeline, sizeof(pipeline),
 	 "appsrc name=source is-live=TRUE block=TRUE "
 	 "do-timestamp=TRUE max-bytes=6000000 ! "
-	 "capsfilter caps=\"video/x-raw,width=%d height=%d format=I420,framerate=30/1\" ! "
+	 "capsfilter caps=\"video/x-raw,width=%d,height=%d,format=I420,framerate=30/1,interlace-mode=progressive\" ! "
 	 "v4l2sink name=sink async=FALSE sync=FALSE device=%s",
 	 size->w, size->h, dev);
 
